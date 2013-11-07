@@ -1,0 +1,28 @@
+{
+  "name": "app",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app/static/js/main.js",
+  "directories": {},
+  "repository": "",
+  "author": "Cameron Stitt <cameron@castitt.com>",
+  "license": "BSD",
+  "readmeFilename": "readme.md",
+  "private": true,
+  "devDependencies": {
+    "karma-script-launcher": "~0.1.0",
+    "karma-chrome-launcher": "~0.1.0",
+    "karma-firefox-launcher": "~0.1.0",
+    "karma-html2js-preprocessor": "~0.1.0",
+    "karma-jasmine": "~0.1.3",
+    "karma-requirejs": "~0.1.0",
+    "karma-coffee-preprocessor": "~0.1.0",
+    "karma-phantomjs-launcher": "~0.1.0",
+    "karma": "~0.10.4",
+    "grunt": "~0.4.1",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-shell": "~0.5.0",
+    "grunt-contrib-less": "~0.8.1",
+    "grunt-karma": "~0.6.2"
+  }
+}
