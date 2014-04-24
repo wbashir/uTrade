@@ -1,9 +1,4 @@
-# Getting Setup
-```
-$ pip install -r requirements.txt
+uTrade
+======
 
-# if you are using Nitrous.io
-$ pip install -r requirements.txt --user
-
-$ python migrator.py "up"
-```
+Book Trading, but simple. 
