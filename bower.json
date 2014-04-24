@@ -1,17 +1,15 @@
 {
-  "name": "app",
-  "version": "0.0.0",
-  "authors": [
-    "Cameron Stitt <cameron@castitt.com>"
-  ],
-  "license": "MIT",
-  "private": true,
-  "dependencies": {
-    "bootstrap": "~3.0.2",
-    "flight": "~1.1.1",
-    "jasmine-flight": "~2.1.0",
-    "requirejs": "~2.1.9",
-    "jasmine-jquery": "~1.5.92",
-    "lodash": "~2.2.1"
-  }
+    "name": "uTrade",
+    "version": "0.0.0",
+    "authors": [
+        ""
+    ],
+    "license": "MIT",
+    "private": true,
+    "dependencies": {
+        "jquery": "~1.10.2",
+        "bootstrap": "~3.0.2",
+        "requirejs": "~2.1.9",
+        "lodash": "~2.2.1"
+    }
 }
