@@ -1,0 +1,17 @@
+h1, h2 {
+    font-family: 'Roboto', 'sans-serif';
+}
+
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+
+.main-section {
+    padding-top: 44px;
+}
+
+.navbar-default {
+    background-color: #63CDA9;
+    border-color: #63CDA9;
+}

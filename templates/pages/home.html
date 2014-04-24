@@ -1,10 +1,23 @@
 {% extends 'layouts/main.html' %}
 {% block title %}Home{% endblock %}
+{% block head %}
+    {{ super() }}
+    <link href="/static/css/main.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100italic,100,300,500,700' rel='stylesheet'
+          type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,700' rel='stylesheet' type='text/css'>
+{% endblock %}
 {% block content %}
 
-<div class="page-header">
-  <h1>Sticky footer with fixed navbar</h1>
-</div>
-<p class="lead">Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS. A fixed navbar has been added within <code>#wrap</code> with <code>padding-top: 60px;</code> on the <code>.container</code>.</p>
+    <div class="col-md-10 col-centered ">
+        <div class="page-header">
+            <h1 class="text-center logo-middle">UTrade</h1>
+        </div>
+        <p class="lead">Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom
+            HTML
+            and CSS. A fixed navbar has been added within <code>#wrap</code> with <code>padding-top: 60px;</code> on the
+            <code>.container</code>.</p>
+    </div>
+
 
 {% endblock %}
