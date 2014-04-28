@@ -2,10 +2,15 @@
 # Imports.
 #----------------------------------------------------------------------------#
 
-from flask import * # do not use '*'; actually input the dependencies.
+from flask import *  # do not use '*'; actually input the dependencies.
 from flask.ext.sqlalchemy import SQLAlchemy
+from flask_wtf import Form
+from wtforms.ext.sqlalchemy.orm import model_form
 import logging
 from logging import Formatter, FileHandler
+import models
+
+PostForm = model_form(models.Post, Form)
 
 #----------------------------------------------------------------------------#
 # App Config.
@@ -32,6 +37,12 @@ def home():
     return render_template('pages/home.html')
 
 
+@app.route('/create/posting')
+def create_posting():
+    form = PostForm()
+    return render_template('pages/create_post.html', form=form)
+
+
 # Error handlers.
 
 @app.errorhandler(500)
@@ -39,14 +50,16 @@ def internal_error(error):
     #db_session.rollback()
     return render_template('errors/500.html'), 500
 
+
 @app.errorhandler(404)
 def internal_error(error):
     return render_template('errors/404.html'), 404
 
+
 if not app.debug:
     file_handler = FileHandler('error.log')
     file_handler.setFormatter(Formatter('%(asctime)s %(levelname)s: %(message)s '
-    '[in %(pathname)s:%(lineno)d]'))
+                                        '[in %(pathname)s:%(lineno)d]'))
     app.logger.setLevel(logging.INFO)
     file_handler.setLevel(logging.INFO)
     app.logger.addHandler(file_handler)

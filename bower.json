@@ -10,6 +10,7 @@
         "jquery": "~1.10.2",
         "bootstrap": "~3.1.1",
         "requirejs": "~2.1.9",
-        "lodash": "~2.2.1"
+        "lodash": "~2.2.1",
+        "ionicons": "~1.4.1"
     }
 }

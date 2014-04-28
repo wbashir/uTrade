@@ -2,6 +2,15 @@ h1, h2 {
     font-family: 'Roboto', 'sans-serif';
 }
 
+.page-header {
+    border-bottom: 1px dashed #cbcbcb;
+}
+
+ul, li {
+    list-style-type: none;
+}
+
+
 .col-centered {
     float: none;
     margin: 0 auto;
@@ -14,4 +23,10 @@ h1, h2 {
 .navbar-default {
     background-color: #63CDA9;
     border-color: #63CDA9;
+}
+
+.logo-middle {
+    color: #CA5D38;
+    font-family: 'Titillium Web', 'sans-serif';
+    font-weight: bold;
 }

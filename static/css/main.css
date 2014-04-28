@@ -1,9 +1,28 @@
-.navbar-default .navbar-brand{
+.navbar-default .navbar-brand {
     color: #ffffff;
 }
 
-.logo-middle{
-    color: #CA5D38;
-    font-family: 'Titillium Web', 'sans-serif';
-    font-weight: bold;
+
+.btn {
+    border-radius: 0px;
+}
+
+.btn:hover {
+    text-decoration: none;
+}
+
+.font-white {
+    color: white;
+}
+
+.font-black {
+    color: black;
+}
+
+.float-right {
+    float: right;
+}
+
+.main-options > li > button {
+    font-family: 'Roboto', 'sans-serif';
 }
