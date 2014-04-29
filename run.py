@@ -5,12 +5,30 @@
 from flask import *  # do not use '*'; actually input the dependencies.
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask_wtf import Form
+from sqlalchemy.orm import load_only
+from wtforms.ext.sqlalchemy.fields import QuerySelectField
 from wtforms.ext.sqlalchemy.orm import model_form
 import logging
 from logging import Formatter, FileHandler
+from wtforms.widgets import TextArea
 import models
 
-PostForm = model_form(models.Post, Form)
+#----------------------------------------------------------------------------#
+# Helpers
+#----------------------------------------------------------------------------#
+
+def all_books():
+    return models.Item.query
+
+#----------------------------------------------------------------------------#
+# Forms
+#----------------------------------------------------------------------------#
+
+PostForm = model_form(models.Post, Form, field_args={
+    'description': {'widget': TextArea()},
+    'books': {'widget': QuerySelectField('book_list', query_factory=all_books(),
+                                         get_label='description', allow_blank=True)}
+})
 
 #----------------------------------------------------------------------------#
 # App Config.
@@ -37,11 +55,19 @@ def home():
     return render_template('pages/home.html')
 
 
-@app.route('/create/posting')
+@app.route('/create/posting', methods=['GET', 'POST'])
 def create_posting():
     form = PostForm()
+    if request.method == 'POST' and form.validate():
+        redirect('/')
     return render_template('pages/create_post.html', form=form)
 
+
+@app.route('/get_all_books')
+def get_all_books():
+    books = models.db_session.query(models.Item)
+    # books = models.Item.query.all()
+    return Response([i.json for i in books], mimetype='application/json')
 
 # Error handlers.
 

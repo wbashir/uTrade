@@ -10,6 +10,25 @@ ul, li {
     list-style-type: none;
 }
 
+.btn {
+    border-radius: 0px;
+}
+
+.btn:hover, a:hover {
+    text-decoration: none;
+}
+
+.font-white {
+    color: white;
+}
+
+.font-black {
+    color: black;
+}
+
+.float-right {
+    float: right;
+}
 
 .col-centered {
     float: none;
@@ -29,4 +48,59 @@ ul, li {
     color: #CA5D38;
     font-family: 'Titillium Web', 'sans-serif';
     font-weight: bold;
+    font-size: 36px;
+}
+
+.logo-middle:hover {
+    color: #63CDA9;
+}
+
+form input[type=text],
+form input[type=password],
+form input[type=submit] {
+    font-family: "Open Sans", "Proxima Nova Soft", proxima-nova-soft, "PT SANS", "Helvetica Neue", Helvetica, sans-serif;
+}
+
+form input[type=text],
+form input[type=password],
+form textarea {
+    width: 270px;
+    height: 40px;
+    margin-bottom: 10px;
+    padding-left: 15px;
+    background: #fff;
+    border: 1px solid #a9a9a9;
+    outline: none;
+}
+
+form input[type=text]:focus, form textarea:focus {
+    border: 1px solid #000;
+    color: #000;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    outline: 0;
+}
+
+form textarea {
+    width: 828px;
+    min-height: 165px;
+    resize: none;
+}
+
+form input[type=submit] {
+    padding: 14px 31px;
+    background: #76b294;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: -.7em;
+    border: 0;
+}
+
+.generic-form-holder > form {
+    padding-top: 30px;
+}
+
+.generic-form-holder {
+    padding-left: 10px;
 }

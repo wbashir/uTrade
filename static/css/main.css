@@ -3,25 +3,6 @@
 }
 
 
-.btn {
-    border-radius: 0px;
-}
-
-.btn:hover {
-    text-decoration: none;
-}
-
-.font-white {
-    color: white;
-}
-
-.font-black {
-    color: black;
-}
-
-.float-right {
-    float: right;
-}
 
 .main-options > li > button {
     font-family: 'Roboto', 'sans-serif';
