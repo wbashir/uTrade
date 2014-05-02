@@ -104,3 +104,17 @@ form input[type=submit] {
 .generic-form-holder {
     padding-left: 10px;
 }
+
+select {
+    border-radius: 0px;
+    width: 300px !important;
+}
+
+#price {
+    width: 120px;
+}
+
+#condition_description {
+    width: 317px;
+}
+

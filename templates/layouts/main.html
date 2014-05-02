@@ -9,6 +9,7 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100italic,100,300,500,700' rel='stylesheet'
           type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,700' rel='stylesheet' type='text/css'>
+    <link href="/static/bower_components/select2/select2-bootstrap.css" rel="stylesheet" type="text/css">
     <link href="/static/css/layout/base.css" rel="stylesheet">
 
     {% block head %}
@@ -55,9 +56,12 @@
 </div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="/static/bower_components/jquery/dist/jquery.min.js"></script>
-<script src="/static/bower_components/requirejs/require.js" data-main="/static/js/main.js"></script>
+<script src="/static/bower_components/jquery/jquery.min.js"></script>
+{#<script src="/static/bower_components/requirejs/require.js" data-main="/static/js/main.js"></script>#}
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/static/bower_components/underscore/underscore.js"></script>
+<script src="/static/bower_components/select2/select2.min.js"></script>
+<script src="/static/js/main.js"></script>
 </body>
 </html>

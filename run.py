@@ -6,16 +6,17 @@ from flask import *  # do not use '*'; actually input the dependencies.
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask_wtf import Form
 from sqlalchemy.orm import load_only
-from wtforms.ext.sqlalchemy.fields import QuerySelectField
 from wtforms.ext.sqlalchemy.orm import model_form
 import logging
 from logging import Formatter, FileHandler
 from wtforms.widgets import TextArea
 import models
-
+from serializers import ItemsSerializer
 #----------------------------------------------------------------------------#
 # Helpers
 #----------------------------------------------------------------------------#
+user = models.User.query.first()
+
 
 def all_books():
     return models.Item.query
@@ -25,9 +26,7 @@ def all_books():
 #----------------------------------------------------------------------------#
 
 PostForm = model_form(models.Post, Form, field_args={
-    'description': {'widget': TextArea()},
-    'books': {'widget': QuerySelectField('book_list', query_factory=all_books(),
-                                         get_label='description', allow_blank=True)}
+    'description': {'widget': TextArea()}
 })
 
 #----------------------------------------------------------------------------#
@@ -58,16 +57,35 @@ def home():
 @app.route('/create/posting', methods=['GET', 'POST'])
 def create_posting():
     form = PostForm()
-    if request.method == 'POST' and form.validate():
-        redirect('/')
+    if request.method == 'POST':
+        # new_post = models.Post(
+        #     form.description.data,
+        #     user.id,
+        #     price=form.price.data,
+        #     type='SellerPost',
+        #     book_condition=form.book_condition.data,
+        #
+        # )
+        if request.data:
+            pass
+
+
+
+        # models.db_session.add(new_post)
+        # models.db_session.commit()
+        # return redirect(url_for('home'))
+
     return render_template('pages/create_post.html', form=form)
 
 
 @app.route('/get_all_books')
 def get_all_books():
-    books = models.db_session.query(models.Item)
-    # books = models.Item.query.all()
-    return Response([i.json for i in books], mimetype='application/json')
+    # books = models.db_session.query(models.Item).all()
+    books = models.Item.query.all()
+    print books
+    return jsonify({"items": ItemsSerializer(books, many=True).data})
+    # return Response([i.json for i in books], mimetype='application/json')
+
 
 # Error handlers.
 
