@@ -1,0 +1,23 @@
+<form method="post" id="new-book-form">
+    {{ itemForm.csrf_token }}
+    <div class="form-group">
+        <label class="form-label">{{ itemForm.title.label }}</label>
+        <br>
+        {{ itemForm.title(placeholder="Enter a title") }}
+    </div>
+    <div class="form-group">
+        <label class="form-label">Image URL</label>
+        <br>
+        {{ itemForm.img_url(placeholder="Image url") }}
+    </div>
+    <div class="form-group">
+        <label class="form-label">{{ itemForm.authors.label }}</label>
+        <br>
+        {{ itemForm.authors(placeholder="Authors") }}
+        <br>
+        <label class="form-label">{{ itemForm.edition.label }}</label>
+        <br>
+        {{ itemForm.edition(placeholder="Edition") }}
+
+    </div>
+</form>

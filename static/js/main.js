@@ -23,9 +23,34 @@
 //        }
 //    });
 //});
+String.prototype.toProperCase = function () {
+    var words = this.split(' ');
+    var results = [];
+    for (var i = 0; i < words.length; i++) {
+        var letter = words[i].charAt(0).toUpperCase();
+        results.push(letter + words[i].slice(1));
+    }
+    return results.join(' ');
+};
+
+/**
+ *
+ */
+function reloadSelectItem(){
+     $.ajax({
+        url: "/get_all_books",
+        dataType: 'json',
+        success: function (data) {
+            $.each(data.items, function (i, value) {
+                $('#bookList').append($('<option>').text(value.title.toProperCase()).attr('value', value.id));
+            });
+
+        }
+    });
+}
 
 $(document).ready(function () {
-
+    reloadSelectItem();
 
     /**
      *
@@ -44,37 +69,48 @@ $(document).ready(function () {
     }
 
 
-    $.ajax({
-        url: "/get_all_books",
-        dataType: 'json',
-        success: function (data) {
-            $.each(data.items, function (i, value) {
-                $('#bookList').append($('<option>').text(value.title).attr('value', value.id));
-            });
-
-        }
+    $('#new-book').click(function (e) {
+        e.preventDefault();
+        $('#myModal').modal();
     });
 
-
-    $('#save-posting').click(function (e) {
+    $('#save-item').click(function (e) {
         e.preventDefault();
-        var postingForm = $('#posting-form');
-        var jsonObj = parseForm(postingForm);
-
+        var itemForm = $('#new-book-form');
+        var jsonObj = parseForm(itemForm);
 
         $.ajax({
-            url: '/create/posting',
+            url: '/create/item',
             type: 'post',
-            contentType:'application/json',
-            data: jsonObj,
+            contentType: 'application/json',
+            data: JSON.stringify(jsonObj),
             success: function (data) {
-                console.log('success');
+                window.location.replace("/create/posting");
+                reloadSelectItem();
             },
             error: function (xhr, textStatus, thrownError) {
                 console.log(thrownError);
             }
         });
 
+    });
+    $('#save-posting').click(function (e) {
+        e.preventDefault();
+        var postingForm = $('#posting-form');
+        var jsonObj = parseForm(postingForm);
+
+        $.ajax({
+            url: '/create/posting',
+            type: 'post',
+            contentType: 'application/json',
+            data: JSON.stringify(jsonObj),
+            success: function (data) {
+                window.location.replace("/");
+            },
+            error: function (xhr, textStatus, thrownError) {
+                console.log(thrownError);
+            }
+        });
     });
 
 //    $("select").select2({

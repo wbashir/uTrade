@@ -42,12 +42,11 @@
 <div class="container content">
     <section class="main-section">
         <div class="page-header ">
-{#            <h1 class="text-center logo-middle">#}
-{#                <i class="icon ion-ionic"></i> UTrade#}
-{#            </h1>#}
-            <a href="{{ url_for("home") }}" class="text-center logo-middle">
-                 <i class="icon ion-ionic"></i> UTrade
-            </a>
+            <div class="text-center">
+                <a href="{{ url_for("home") }}" class="text-center logo-middle">
+                    <i class="icon ion-ionic"></i> UTrade
+                </a>
+            </div>
         </div>
         {% block content %}
         {% endblock %}

@@ -6,7 +6,7 @@
     <div class="col-centered generic-form-holder">
         <h1 class="">Create a new posting</h1>
 
-        <form method="POST" action="/create/posting" id="posting-form">
+        <form method="POST" id="posting-form">
 
             {{ form.csrf_token }}
             <div class="form-group">
@@ -25,12 +25,16 @@
                 {{ form.description() }}
             </div>
             <br>
+
             <div class="form-group">
                 <label class="form-label">Select Book Title</label>
                 <br>
-                <select class="form-control" id="bookList"></select>
+                <select class="form-control" id="bookList" name="book_item"></select>
+                <button class="btn btn-link" data-toggle="modal" id="new-book">
+                    Cant find my book
+                </button>
             </div>
-             <div class="form-group">
+            <div class="form-group">
                 <label class="form-label">Select Book Condition</label>
                 <br>
                 {{ form.book_condition(class="form-control") }}
@@ -38,5 +42,25 @@
             <input class="float-right" id="save-posting" type="submit" value="Save Posting">
         </form>
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Create a new book</h4>
+                </div>
+                <div class="modal-body">
+                    {% include '/pages/create_item.html' %}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" id="save-item" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
 {% endblock %}

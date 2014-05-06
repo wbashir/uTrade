@@ -9,20 +9,38 @@
 {% block content %}
 
     <div class="col-md-12 col-centered ">
-         <div class="col-md-12">
-                <ul class="list-inline float-right main-options">
-                    <li>
-                        <a href="{{ url_for("create_posting") }}" type="button" class="btn btn-link">
+        <div class="col-md-12">
+            <ul class="list-inline float-right main-options">
+                <li>
+                    <a href="{{ url_for("create_posting") }}" type="button" class="btn btn-link">
                         Add Post
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" type="button" class="btn btn-link">
+                    </a>
+                </li>
+                <li>
+                    <a href="#" type="button" class="btn btn-link">
                         Add Request
-                        </a>
-                    </li>
-                </ul>
-            </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <br>
+        <section>
+            <ul class="grid cs-style-2">
+                {% for post in posts %}
+                <li>
+                    <figure>
+                        <img src="{{ post.item.img_url }}" alt="img01">
+                        <figcaption>
+                            <h3>$ {{ post.price}}</h3>
+                            <span class="post-type">{{ post.item.title | title }}</span>
+                            <span class="label label-primary ">{{ post.type }}</span>
+                        </figcaption>
+                    </figure>
+                </li>
+                 {% endfor %}
+                <!-- ... -->
+            </ul>
+        </section>
     </div>
 
 {% endblock %}

@@ -78,7 +78,7 @@ class Post(Base):
     def __init__(self, item_id, description=None, user_id=None,
                  type=None, price=None, book_condition=None, condition_description=None):
         self.description = description
-        self.item = item_id
+        self.item_id = item_id
         self.user_id = user_id
         self.type = type
         self.price = price

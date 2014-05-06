@@ -1,6 +1,7 @@
 #----------------------------------------------------------------------------#
 # Imports.
 #----------------------------------------------------------------------------#
+import uuid
 
 from flask import *  # do not use '*'; actually input the dependencies.
 from flask.ext.sqlalchemy import SQLAlchemy
@@ -29,6 +30,7 @@ PostForm = model_form(models.Post, Form, field_args={
     'description': {'widget': TextArea()}
 })
 
+ItemForm = model_form(models.Item, Form)
 #----------------------------------------------------------------------------#
 # App Config.
 #----------------------------------------------------------------------------#
@@ -51,31 +53,53 @@ def shutdown_session(exception=None):
 
 @app.route('/')
 def home():
-    return render_template('pages/home.html')
+    data = models.db_session.query(models.Post).join(models.Item)
+    for i in data:
+        print i.description
+    return render_template('pages/home.html', posts=data)
 
 
 @app.route('/create/posting', methods=['GET', 'POST'])
 def create_posting():
     form = PostForm()
+    itemForm = ItemForm()
     if request.method == 'POST':
-        # new_post = models.Post(
-        #     form.description.data,
-        #     user.id,
-        #     price=form.price.data,
-        #     type='SellerPost',
-        #     book_condition=form.book_condition.data,
-        #
-        # )
+
         if request.data:
-            pass
+            data = json.loads(request.data)
+            new_post = models.Post(
+                int(data['book_item']),
+                data['description'],
+                user.id,
+                price=data['price'],
+                type='SellerPost',
+                book_condition=data['book_condition'],
+                condition_description=data['condition_description']
+            )
+            models.db_session.add(new_post)
+            models.db_session.commit()
+
+        return redirect(url_for('home'))
+
+    return render_template('pages/create_post.html', form=form, itemForm=itemForm)
 
 
+@app.route('/create/item', methods=['POST'])
+def create_book():
+    posted_data = request.data
 
-        # models.db_session.add(new_post)
-        # models.db_session.commit()
-        # return redirect(url_for('home'))
-
-    return render_template('pages/create_post.html', form=form)
+    if posted_data:
+        data = json.loads(posted_data)
+        new_item = models.Item(
+            str(uuid.uuid4()),
+            title=data['title'],
+            authors=data['authors'],
+            edition=data['edition'],
+            img_url=data['img_url']
+        )
+        models.db_session.add(new_item)
+        models.db_session.commit()
+        return ""
 
 
 @app.route('/get_all_books')
