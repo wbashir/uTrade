@@ -11,4 +11,4 @@ DEBUG = True
 SECRET_KEY = 'my precious'
 
 # Connect to the database
-SQLALCHEMY_DATABASE_URI = 'mysql://uTrade:F7!93pwu@localhost:8889/uTrade'
+SQLALCHEMY_DATABASE_URI = 'mysql://uTrade:F7!93pwu@127.0.0.1:8889/uTrade'

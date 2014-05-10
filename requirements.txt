@@ -1,6 +1,6 @@
 flask==0.10.1           #web framework
-arrow==0.4.1            #date/datetime/timezone library
-arnold==0.3.1           #migration management
+arrow            #date/datetime/timezone library
+arnold          #migration management
 nose==1.3.0             #test runner
 flask-sqlalchemy
 Flask-WTF

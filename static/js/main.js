@@ -36,8 +36,8 @@ String.prototype.toProperCase = function () {
 /**
  *
  */
-function reloadSelectItem(){
-     $.ajax({
+function reloadSelectItem() {
+    $.ajax({
         url: "/get_all_books",
         dataType: 'json',
         success: function (data) {
@@ -109,6 +109,22 @@ $(document).ready(function () {
             },
             error: function (xhr, textStatus, thrownError) {
                 console.log(thrownError);
+            }
+        });
+    });
+
+    $('.delete-opt').click(function (e) {
+        e.preventDefault();
+        var par = $(e.target).parent();
+        var id = par.attr('id').split('-')[1];
+        var urlToDelete = '/delete/posting/' + id
+
+        $.ajax({
+            url: urlToDelete,
+            type: 'DELETE',
+            success: function (result) {
+                window.location.replace("/");
+                reloadSelectItem();
             }
         });
     });

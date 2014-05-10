@@ -83,6 +83,12 @@ def create_posting():
 
     return render_template('pages/create_post.html', form=form, itemForm=itemForm)
 
+@app.route('/delete/posting/<id>', methods=['DELETE'])
+def delete_posting(id):
+    to_delete = models.db_session.query(models.Post).filter(models.Post.id == id).first()
+    models.db_session.delete(to_delete)
+    models.db_session.commit()
+    return ""
 
 @app.route('/create/item', methods=['POST'])
 def create_book():
