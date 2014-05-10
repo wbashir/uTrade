@@ -68,15 +68,19 @@ ul, li {
 
 .post-type {
     margin-right: 4px;
+    color: white;
 }
 
 .navbar-default {
-    background-color: #63CDA9;
-    border-color: #63CDA9;
+
 }
 
 #img_url {
     width: 100%;
+}
+
+.post-options > i {
+    font-size: 26px;
 }
 
 #edition {
@@ -254,4 +258,15 @@ select {
     position: absolute;
     right: 20px;
     top: 30px;
+}
+
+.post-options-list {
+    padding-top: 10px;
+    padding-left: 0px;
+}
+
+.post-options-list li {
+    padding: 0px;
+    display: inline;
+    padding-right: 19px;
 }

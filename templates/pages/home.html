@@ -36,6 +36,18 @@
                             <span class="label label-primary ">{{ post.type }}</span>
                         </figcaption>
                     </figure>
+                    <ul class="post-options-list">
+                        <li>
+                            <a href="#" id="delete-{{ post.id }}" class="post-options">
+                                <i class="icon ion-ios7-trash-outline"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" id="view" class="post-options">
+                                <i class="icon ion-ios7-eye-outline"></i>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                  {% endfor %}
                 <!-- ... -->
