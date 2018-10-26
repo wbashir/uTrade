@@ -6,7 +6,7 @@ from sqlalchemy import Column, Integer, String
 from sqlalchemy.types import Date
 
 
-engine = create_engine('mysql://uTrade:F7!93pwu@localhost:8889/uTrade', echo=True)
+engine = create_engine('mysql://uTrade:m@localhost:8889/uTrade', echo=True)
 db_session = scoped_session(sessionmaker(autocommit=False,
                                          autoflush=False,
                                          bind=engine))
